@@ -101,21 +101,6 @@ export class Spaceship {
     // }
 
     // public render(scene){
-    //     var sshipc = MeshBuilder.CreateBox("shipc",{
-    //         size: 5,
-    //         height: 5,
-    //         width: 5,
-    //         depth: 5,
-    //         // faceColors: 
-    //         // faceUV: Vector4(),
-    //         // wrap:false,
-    //         // topBaseAt: 1,
-    //         // bottomBaiseAt 0,
-    //         // updateable: false,
-    //         // sideOrientation: 
-    //         // frontUVs:Vector4(0,0, 1,1)
-    //         // backUVs: Vector4(0,0, 1,1)
-    //     },scene)
 
     //     Object.values(this.frame).forEach((attachment)=>{
     //         attachment.render(scene)

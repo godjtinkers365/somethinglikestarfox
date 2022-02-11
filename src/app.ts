@@ -6,7 +6,10 @@ import { Weapon } from "./weapon";
 import { Rocket } from "./rocket";
 import { Wing1 } from "./wing.1";
 // import { Wing } from "./wing";
-
+import { Fuelsource } from "./fuelsource";
+import { Lifesupport } from "./lifesupport";
+import { Tower0 } from "./tower.0";
+import { Tower1 } from "./tower.1";
 
 
 class App {
@@ -27,11 +30,20 @@ class App {
         var light1: HemisphericLight = new HemisphericLight("light1", new Vector3(1, 1, 0), scene);
         // var sphere: Mesh = MeshBuilder.CreateSphere("sphere", { diameter: 1 }, scene);
         camera.attachControl(canvas, true);    
+
+        // const roofMat = new Babylon.StandardMaterial("roofMat");
+        // roofMat.diffuseTexture = new Babylon.Texture("https://assets.babylonjs.com/environments/roof.jpg", scene);
+
+
+
         
         // new Weapon(3,1).render(scene);
-        new Rocket(0).render(scene);
+        // new Rocket(0).render(scene);
         // new Wing1().render(scene);
-
+        // new Fuelsource(0).render(scene);
+        // new Lifesupport(2,1).render(scene);
+        // new Tower0().render(scene);
+        // new Tower1().render(scene);
 
         // hide/show the Inspector
         window.addEventListener("keydown", (ev) => {
