@@ -4,6 +4,9 @@ import "@babylonjs/loaders/glTF";
 import { Engine, Scene, ArcRotateCamera, Vector3, HemisphericLight, Mesh, MeshBuilder, Vector4 } from "@babylonjs/core";
 
 import { Spaceship } from "./spaceship";
+import { Fuelsource2 } from "./fuelsource.2";
+import { WingL2 } from "./wingL.2"
+import { WeaponR1 } from "./weaponR.1"
 // import { Weapon } from "./weapon";
 // import { Rocket } from "./rocket";
 // import { Wing1 } from "./wing.1";
@@ -52,7 +55,9 @@ class App {
         // new Star().render(scene);
 
         new Spaceship({}).render(scene);
-
+        // new Fuelsource2({}).render(scene);
+        // new WingL2({}).render(scene);
+        // new WeaponR1({firerate:3,damage:1}).render(scene);
 
         // hide/show the Inspector
         window.addEventListener("keydown", (ev) => {

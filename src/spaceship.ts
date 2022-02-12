@@ -1,10 +1,13 @@
 import {Fuelsource} from "./fuelsource"
 import {Fuelsource1} from "./fuelsource.1"
+import {Fuelsource2} from "./fuelsource.2"
 import {Rocket} from "./rocket"
 import {Rocket1} from "./rocket.1"
 import {Weapon} from "./weapon"
 // import {Wing} from "./wing"
 import {Wing1} from "./wing.1"
+import {XWingL} from "./xwingl"
+import {XWingR} from "./xwingr"
 import {Wingnose} from "./wingnnose"
 import {Lifesupport} from "./lifesupport"
 import {Empty} from "./empty";
@@ -20,7 +23,7 @@ function render(scene){
 
 export class Spaceship {
     constructor({}) {
-        // this.customize("fng");
+        // this.customize("lotsofguns");
     }
 
     energy = 3000;      // everything in the game revolves around energy
@@ -49,8 +52,8 @@ export class Spaceship {
         // 5: {},  // top face     //
         // 6: {},  // bottom face  //
         "0": {
-            "class":Fuelsource1,
-            "invoke": ()=>new Fuelsource1({}),
+            "class":Fuelsource2,
+            "invoke": ()=>new Fuelsource2({}),
             "instance":{render},
             "args":{}
         },
@@ -61,8 +64,8 @@ export class Spaceship {
             "args":{}
         },
         "2": {
-            "class":Wing1,
-            "invoke": ()=>new Wing1({}),
+            "class":XWingL,
+            "invoke": ()=>new XWingL({}),
             "instance":{render},
             "args":{},
         },
@@ -73,8 +76,8 @@ export class Spaceship {
             "args":{option:1}
         },
         "4": {
-            "class":Empty,
-            "invoke":()=>new Empty({}),
+            "class":XWingR,
+            "invoke":()=>new XWingR({}),
             "instance":{render},
             "args":{}
         },
@@ -229,81 +232,95 @@ export class Spaceship {
             },
         },
         {
-            "name": "fng",
+            "name":"fng",
             "0": {
                 "class":Fuelsource1,
                 "invoke": ()=>new Fuelsource1({}),
-                "instance":{},
+                "instance":{render},
                 "args":{}
             },
             "1": {
                 "class":Wingnose,
                 "invoke":()=>new Wingnose({}),
-                "instance":{},
+                "instance":{render},
                 "args":{}
             },
             "2": {
                 "class":Wing1,
                 "invoke": ()=>new Wing1({}),
-                "instance":{},
+                "instance":{render},
                 "args":{},
             },
             "3": {
                 "class":Rocket1,
                 "invoke":()=>new Rocket1({option:1}),
-                "instance":{},
+                "instance":{render},
                 "args":{option:1}
             },
             "4": {
                 "class":Empty,
                 "invoke":()=>new Empty({}),
-                "instance":{},
+                "instance":{render},
                 "args":{}
             },
             "5": {
                 "class":Empty,
                 "invoke":()=>new Empty({}),
-                "instance":{},
+                "instance":{render},
                 "args":{}
             },
             "6": {
                 "class":Empty,
                 "invoke":()=>new Empty({}),
-                "instance":{},
+                "instance":{render},
                 "args":{}
             }
         },
-        // {
-        //     "name": "",
-        //     "0": {
-        //         "class":"Fuelsource",
-        //         "args":[0]
-        //     },
-        //     "1": {
-        //         "class":"",
-        //         "args":[]
-        //     },
-        //     "2": {
-        //         "class":"",
-        //         "args":[]
-        //     },
-        //     "3": {
-        //         "class":"Rocket",
-        //         "args":[]
-        //     },
-        //     "4": {
-        //         "class":"",
-        //         "args":[]
-        //     },
-        //     "5": {
-        //         "class":"",
-        //         "args":[]
-        //     },
-        //     "6": {
-        //         "class":"",
-        //         "args":[]
-        //     }
-        // },
+        {
+            "name": "coolerdesign",
+            "0": {
+                "class":Fuelsource2,
+                "invoke": ()=>new Fuelsource2({}),
+                "instance":{render},
+                "args":{}
+            },
+            "1": {
+                "class":Wingnose,
+                "invoke":()=>new Wingnose({}),
+                "instance":{render},
+                "args":{}
+            },
+            "2": {
+                "class":Wing1,
+                "invoke": ()=>new Wing1({}),
+                "instance":{render},
+                "args":{},
+            },
+            "3": {
+                "class":Rocket1,
+                "invoke":()=>new Rocket1({option:1}),
+                "instance":{render},
+                "args":{option:1}
+            },
+            "4": {
+                "class":Empty,
+                "invoke":()=>new Empty({}),
+                "instance":{render},
+                "args":{}
+            },
+            "5": {
+                "class":Empty,
+                "invoke":()=>new Empty({}),
+                "instance":{render},
+                "args":{}
+            },
+            "6": {
+                "class":Empty,
+                "invoke":()=>new Empty({}),
+                "instance":{render},
+                "args":{}
+            }
+        },
         // {
         //     "name": "",
         //     "0": {
