@@ -7,7 +7,7 @@ export class Weapon {
     barrel0;
     barrel1;
     barrel2;
-    constructor(firerate,damage){
+    constructor({firerate,damage}){
         this.firerate = firerate;
         this.damage = damage;
     }

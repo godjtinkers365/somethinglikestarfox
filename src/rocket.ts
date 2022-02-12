@@ -9,7 +9,7 @@ export class Rocket {
     rocketshaft0;
     rocketshaft1;
 
-    constructor(option){
+    constructor({option}){
         this.option = option;
         this.fuelconsume = 7 - option;
         this.power = 1 + (option / 3)

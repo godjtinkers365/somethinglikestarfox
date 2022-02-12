@@ -2,14 +2,18 @@ import "@babylonjs/core/Debug/debugLayer";
 import "@babylonjs/inspector";
 import "@babylonjs/loaders/glTF";
 import { Engine, Scene, ArcRotateCamera, Vector3, HemisphericLight, Mesh, MeshBuilder, Vector4 } from "@babylonjs/core";
-import { Weapon } from "./weapon";
-import { Rocket } from "./rocket";
-import { Wing1 } from "./wing.1";
-// import { Wing } from "./wing";
-import { Fuelsource } from "./fuelsource";
-import { Lifesupport } from "./lifesupport";
-import { Tower0 } from "./tower.0";
-import { Tower1 } from "./tower.1";
+
+import { Spaceship } from "./spaceship";
+// import { Weapon } from "./weapon";
+// import { Rocket } from "./rocket";
+// import { Wing1 } from "./wing.1";
+// // import { Wing } from "./wing";
+// import { Fuelsource } from "./fuelsource";
+// import { Lifesupport } from "./lifesupport";
+// import { Tower0 } from "./tower.0";
+// import { Tower1 } from "./tower.1";
+// import { Asteroid } from "./asteroid";
+// import { Star } from "./star";
 
 
 class App {
@@ -44,6 +48,11 @@ class App {
         // new Lifesupport(2,1).render(scene);
         // new Tower0().render(scene);
         // new Tower1().render(scene);
+        // new Asteroid().render(scene);
+        // new Star().render(scene);
+
+        new Spaceship().render(scene);
+
 
         // hide/show the Inspector
         window.addEventListener("keydown", (ev) => {

@@ -1,6 +1,6 @@
 import {MeshBuilder} from "@babylonjs/core"
 export class Wing1 {
-    constructor(){}
+    constructor({}){}
     wing;
     wingtip0;
     wingtip1;

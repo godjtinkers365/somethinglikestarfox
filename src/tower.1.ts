@@ -5,7 +5,7 @@ export class Tower1 {
     towerblock0;
     towerblock1;
     towerblock2;
-    constructor(){}
+    constructor({}){}
     public render(scene){
         this.towerbase = MeshBuilder.CreateCylinder("towerbase",{
             height:             0.3, //(number) height of the cylinder	2

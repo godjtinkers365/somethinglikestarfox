@@ -6,7 +6,7 @@ export class Lifesupport {
     disk0;
     disk1;
     beam;
-    constructor(shieldregen,healthregen) {
+    constructor({shieldregen,healthregen}) {
         this.shieldregen=shieldregen;
         this.healthregen=healthregen;
     }

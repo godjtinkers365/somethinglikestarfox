@@ -1,7 +1,7 @@
 import { MeshBuilder } from "@babylonjs/core";
 
 export class Wing {
-    constructor(){}
+    constructor({}){}
     wing;
     wingpod;
     public render(scene){

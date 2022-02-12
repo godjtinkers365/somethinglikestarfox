@@ -5,7 +5,7 @@ export class Tower0 {
     towerblock0;
     towerblock1;
     towerblock2;
-    constructor(){}
+    constructor({}){}
     public render(scene){
         this.towerbase = MeshBuilder.CreateBox("towerbase",{
             size: 1,

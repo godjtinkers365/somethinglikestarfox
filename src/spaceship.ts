@@ -1,14 +1,15 @@
-
 import {Fuelsource} from "./fuelsource"
 import {Rocket} from "./rocket"
 import {Weapon} from "./weapon"
 import {Wing} from "./wing"
 import {Lifesupport} from "./lifesupport"
-import {MeshBuilder} from "@babylonjs/core"
+import {Empty} from "./empty";
+// import {MeshBuilder} from "@babylonjs/core"
+
 
 export class Spaceship {
-    constructor() {
-        
+    constructor({}) {
+        this.customize("default");
     }
 
     energy = 3000;      // everything in the game revolves around energy
@@ -29,13 +30,60 @@ export class Spaceship {
         // 6 attachments
         // 1 inner fuel storage
 
-        0: Object,  // inner        // fuelsource only 
-        1: Object,  // front face   // 
-        2: Object,  // left face    //
-        3: Object,  // back face    // rockets only
-        4: Object,  // right face   //
-        5: Object,  // top face     //
-        6: Object,  // bottom face  //
+        // 0: {},  // inner        // fuelsource only 
+        // 1: {},  // front face   // 
+        // 2: {},  // left face    //
+        // 3: {},  // back face    // rockets only
+        // 4: {},  // right face   //
+        // 5: {},  // top face     //
+        // 6: {},  // bottom face  //
+
+        "0": {
+            "class":Fuelsource,
+            "instance": null,
+            "args":{
+                "option":0
+            },
+        },
+        "1": {
+            "class":Empty,
+            "instance": null,
+            "args":{},
+        },
+        "2": {
+            "class":Wing,
+            "instance": null,
+            "args":{},
+        },
+        "3": {
+            "class":Rocket,
+            "instance": null,
+            "args":{
+                "option": 1
+            }
+        },
+        "4": {
+            "class":Weapon,
+            "instance": null,
+            "args":{firerate:3,damage:1},
+        },
+        "5": {
+            "class":Lifesupport,
+            "instance": null,
+            "args": {shieldregen:2,healthregen:1},
+        },
+        "6": {
+            "class":Empty,
+            "instance": null,
+            "args":[]
+        }
+
+
+
+
+
+
+
     }
 
     fuelsource:{
@@ -92,21 +140,284 @@ export class Spaceship {
     public fire(){}
     public accel(){}
 
-    // public customize(){
-    //     Object.values(this.framerules).forEach((clas,index)=>{
-    //         clas.some((classs)=>{
-    //             return this.frame[index] instanceof classs
-    //         }) || (()=>{ throw new Error() })()
-    //     });
-    // }
+    public customize(customization){
+        let cust;
+        if (typeof customization === "string") {
+            cust = Spaceship.customizations.filter((obj) => {
+                return obj.name === customization
+            });
+            if (cust.length !== 1) {
+                throw new Error();
+            }
+        } else if (typeof customization === "object" && !Array.isArray(customization)) {
+            cust = customization;
+        } else {
+            throw new Error();
+        }
+        for (let i = 0; i < 7; i++){
+            this.frame[i] = cust[i];               
+        }
+        // framerules enforcement
+        Object.values(this.framerules).forEach((clas,index)=>{
+            clas.some((classs)=>{
+                return this.frame[index] instanceof classs
+            }) || (()=>{ throw new Error() })()
+        });
+    }
 
-    // public render(scene){
+    public render(scene){
+        Object.values(this.frame).forEach((attachment)=>{
+            console.log("attachment",attachment);
+            let clas = attachment["class"];
+            let args = attachment["args"];
+            let instance = new clas(args);
+            attachment["instance"] = instance;
+            attachment.instance.render(scene);
+        });
+    }
 
-    //     Object.values(this.frame).forEach((attachment)=>{
-    //         attachment.render(scene)
-    //     });
 
 
-    // }
+
+    static customizations = [
+        {
+            "0": {
+                "class":Fuelsource,
+                "instance": null,
+                "args":{
+                    "option":0
+                },
+            },
+            "1": {
+                "class":Empty,
+                "instance": null,
+                "args":{},
+            },
+            "2": {
+                "class":Wing,
+                "instance": null,
+                "args":{},
+            },
+            "3": {
+                "class":Rocket,
+                "instance": null,
+                "args":{
+                    "option": 1
+                }
+            },
+            "4": {
+                "class":Weapon,
+                "instance": null,
+                "args":{firerate:3,damage:1},
+            },
+            "5": {
+                "class":Lifesupport,
+                "instance": null,
+                "args": {shieldregen:2,healthregen:1},
+            },
+            "6": {
+                "class":Empty,
+                "instance": null,
+                "args":[]
+            },
+        }
+        // {
+        //     "name": "fng",
+        //     "0": {
+        //         "class":"Fuelsource",
+        //         "args":[0]
+        //     },
+        //     "1": {
+        //         "class":"",
+        //         "args":[]
+        //     },
+        //     "2": {
+        //         "class":"",
+        //         "args":[]
+        //     },
+        //     "3": {
+        //         "class":"Rocket",
+        //         "args":[]
+        //     },
+        //     "4": {
+        //         "class":"",
+        //         "args":[]
+        //     },
+        //     "5": {
+        //         "class":"",
+        //         "args":[]
+        //     },
+        //     "6": {
+        //         "class":"Weapon",
+        //         "args":[]
+        //     }
+        // },
+        // {
+        //     "name": "",
+        //     "0": {
+        //         "class":"Fuelsource",
+        //         "args":[0]
+        //     },
+        //     "1": {
+        //         "class":"",
+        //         "args":[]
+        //     },
+        //     "2": {
+        //         "class":"",
+        //         "args":[]
+        //     },
+        //     "3": {
+        //         "class":"Rocket",
+        //         "args":[]
+        //     },
+        //     "4": {
+        //         "class":"",
+        //         "args":[]
+        //     },
+        //     "5": {
+        //         "class":"",
+        //         "args":[]
+        //     },
+        //     "6": {
+        //         "class":"",
+        //         "args":[]
+        //     }
+        // },
+        // {
+        //     "name": "",
+        //     "0": {
+        //         "class":"Fuelsource",
+        //         "args":[0]
+        //     },
+        //     "1": {
+        //         "class":"",
+        //         "args":[]
+        //     },
+        //     "2": {
+        //         "class":"",
+        //         "args":[]
+        //     },
+        //     "3": {
+        //         "class":"Rocket",
+        //         "args":[]
+        //     },
+        //     "4": {
+        //         "class":"",
+        //         "args":[]
+        //     },
+        //     "5": {
+        //         "class":"",
+        //         "args":[]
+        //     },
+        //     "6": {
+        //         "class":"",
+        //         "args":[]
+        //     }
+        // },
+        // {
+        //     "name": "",
+        //     "0": {
+        //         "class":"Fuelsource",
+        //         "args":[0]
+        //     },
+        //     "1": {
+        //         "class":"",
+        //         "args":[]
+        //     },
+        //     "2": {
+        //         "class":"",
+        //         "args":[]
+        //     },
+        //     "3": {
+        //         "class":"Rocket",
+        //         "args":[]
+        //     },
+        //     "4": {
+        //         "class":"",
+        //         "args":[]
+        //     },
+        //     "5": {
+        //         "class":"",
+        //         "args":[]
+        //     },
+        //     "6": {
+        //         "class":"",
+        //         "args":[]
+        //     }
+        // },
+        // {
+        //     "name": "",
+        //     "0": {
+        //         "class":"Fuelsource",
+        //         "args":[0]
+        //     },
+        //     "1": {
+        //         "class":"",
+        //         "args":[]
+        //     },
+        //     "2": {
+        //         "class":"",
+        //         "args":[]
+        //     },
+        //     "3": {
+        //         "class":"Rocket",
+        //         "args":[]
+        //     },
+        //     "4": {
+        //         "class":"",
+        //         "args":[]
+        //     },
+        //     "5": {
+        //         "class":"",
+        //         "args":[]
+        //     },
+        //     "6": {
+        //         "class":"",
+        //         "args":[]
+        //     }
+        // },
+        // {
+        //     "name": "",
+        //     "0": {
+        //         "class":"Fuelsource",
+        //         "args":[0]
+        //     },
+        //     "1": {
+        //         "class":"",
+        //         "args":[]
+        //     },
+        //     "2": {
+        //         "class":"",
+        //         "args":[]
+        //     },
+        //     "3": {
+        //         "class":"Rocket",
+        //         "args":[]
+        //     },
+        //     "4": {
+        //         "class":"",
+        //         "args":[]
+        //     },
+        //     "5": {
+        //         "class":"",
+        //         "args":[]
+        //     },
+        //     "6": {
+        //         "class":"",
+        //         "args":[]
+        //     }
+        // }
+    ]
+
+
+
+
+
+
+
+
+
+
+
 
 }
