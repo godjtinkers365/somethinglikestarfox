@@ -4,11 +4,14 @@ import {Fuelsource2} from "./fuelsource.2"
 import {Rocket} from "./rocket"
 import {Rocket1} from "./rocket.1"
 import {Weapon} from "./weapon"
+import {WWeaponL} from "./wweaponl"
+import {WWeaponR} from "./wweaponr"
 // import {Wing} from "./wing"
 import {Wing1} from "./wing.1"
 import {XWingL} from "./xwingl"
 import {XWingR} from "./xwingr"
 import {Wingnose} from "./wingnnose"
+import {Wingnose1} from "./wingnose.1"
 import {Lifesupport} from "./lifesupport"
 import {Empty} from "./empty";
 // import {MeshBuilder} from "@babylonjs/core"
@@ -58,8 +61,8 @@ export class Spaceship {
             "args":{}
         },
         "1": {
-            "class":Wingnose,
-            "invoke":()=>new Wingnose({}),
+            "class":Wingnose1,
+            "invoke":()=>new Wingnose1({}),
             "instance":{render},
             "args":{}
         },
@@ -82,14 +85,14 @@ export class Spaceship {
             "args":{}
         },
         "5": {
-            "class":Empty,
-            "invoke":()=>new Empty({}),
+            "class":WWeaponL,
+            "invoke":()=>new WWeaponL({firerate:3,damage:1}),
             "instance":{render},
             "args":{}
         },
         "6": {
-            "class":Empty,
-            "invoke":()=>new Empty({}),
+            "class":WWeaponR,
+            "invoke":()=>new WWeaponR({firerate:3,damage:1}),
             "instance":{render},
             "args":{}
         }
@@ -321,6 +324,50 @@ export class Spaceship {
                 "args":{}
             }
         },
+        {
+            "0": {
+                "class":Fuelsource2,
+                "invoke": ()=>new Fuelsource2({}),
+                "instance":{render},
+                "args":{}
+            },
+            "1": {
+                "class":Wingnose1,
+                "invoke":()=>new Wingnose1({}),
+                "instance":{render},
+                "args":{}
+            },
+            "2": {
+                "class":XWingL,
+                "invoke": ()=>new XWingL({}),
+                "instance":{render},
+                "args":{},
+            },
+            "3": {
+                "class":Rocket1,
+                "invoke":()=>new Rocket1({option:1}),
+                "instance":{render},
+                "args":{option:1}
+            },
+            "4": {
+                "class":XWingR,
+                "invoke":()=>new XWingR({}),
+                "instance":{render},
+                "args":{}
+            },
+            "5": {
+                "class":Empty,
+                "invoke":()=>new Empty({}),
+                "instance":{render},
+                "args":{}
+            },
+            "6": {
+                "class":Empty,
+                "invoke":()=>new Empty({}),
+                "instance":{render},
+                "args":{}
+            }
+        }
         // {
         //     "name": "",
         //     "0": {
