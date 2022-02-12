@@ -51,7 +51,7 @@ class App {
         // new Asteroid().render(scene);
         // new Star().render(scene);
 
-        new Spaceship().render(scene);
+        new Spaceship({}).render(scene);
 
 
         // hide/show the Inspector

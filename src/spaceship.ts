@@ -1,15 +1,26 @@
 import {Fuelsource} from "./fuelsource"
+import {Fuelsource1} from "./fuelsource.1"
 import {Rocket} from "./rocket"
+import {Rocket1} from "./rocket.1"
 import {Weapon} from "./weapon"
-import {Wing} from "./wing"
+// import {Wing} from "./wing"
+import {Wing1} from "./wing.1"
+import {Wingnose} from "./wingnnose"
 import {Lifesupport} from "./lifesupport"
 import {Empty} from "./empty";
 // import {MeshBuilder} from "@babylonjs/core"
 
 
+function render(scene){
+    /**
+     * This is a mock function
+     * to trick the transpiler.
+     */
+}
+
 export class Spaceship {
     constructor({}) {
-        this.customize("default");
+        // this.customize("fng");
     }
 
     energy = 3000;      // everything in the game revolves around energy
@@ -18,12 +29,12 @@ export class Spaceship {
                         // health regenerates slower than shield
     framerules = {
         0: [Fuelsource], 
-        1: [Weapon, Wing, Lifesupport], 
-        2: [Weapon, Wing, Lifesupport], 
+        1: [Weapon, Wing1, Lifesupport], 
+        2: [Weapon, Wing1, Lifesupport], 
         3: [Rocket],
-        4: [Weapon, Wing, Lifesupport],
-        5: [Weapon, Wing, Lifesupport], 
-        6: [Weapon, Wing, Lifesupport], 
+        4: [Weapon, Wing1, Lifesupport],
+        5: [Weapon, Wing1, Lifesupport], 
+        6: [Weapon, Wing1, Lifesupport], 
     }
     frame = { // ships central frame
 
@@ -37,53 +48,48 @@ export class Spaceship {
         // 4: {},  // right face   //
         // 5: {},  // top face     //
         // 6: {},  // bottom face  //
-
         "0": {
-            "class":Fuelsource,
-            "instance": null,
-            "args":{
-                "option":0
-            },
+            "class":Fuelsource1,
+            "invoke": ()=>new Fuelsource1({}),
+            "instance":{render},
+            "args":{}
         },
         "1": {
-            "class":Empty,
-            "instance": null,
-            "args":{},
+            "class":Wingnose,
+            "invoke":()=>new Wingnose({}),
+            "instance":{render},
+            "args":{}
         },
         "2": {
-            "class":Wing,
-            "instance": null,
+            "class":Wing1,
+            "invoke": ()=>new Wing1({}),
+            "instance":{render},
             "args":{},
         },
         "3": {
-            "class":Rocket,
-            "instance": null,
-            "args":{
-                "option": 1
-            }
+            "class":Rocket1,
+            "invoke":()=>new Rocket1({option:1}),
+            "instance":{render},
+            "args":{option:1}
         },
         "4": {
-            "class":Weapon,
-            "instance": null,
-            "args":{firerate:3,damage:1},
+            "class":Empty,
+            "invoke":()=>new Empty({}),
+            "instance":{render},
+            "args":{}
         },
         "5": {
-            "class":Lifesupport,
-            "instance": null,
-            "args": {shieldregen:2,healthregen:1},
+            "class":Empty,
+            "invoke":()=>new Empty({}),
+            "instance":{render},
+            "args":{}
         },
         "6": {
             "class":Empty,
-            "instance": null,
-            "args":[]
+            "invoke":()=>new Empty({}),
+            "instance":{render},
+            "args":{}
         }
-
-
-
-
-
-
-
     }
 
     fuelsource:{
@@ -119,7 +125,7 @@ export class Spaceship {
     //      */
     //     {
     //         frameposition: null,
-    //         instance: new Wing(), // wing object instance
+    //         instance: new Wing1(), // wing object instance
     //     }
     ]
 
@@ -160,18 +166,19 @@ export class Spaceship {
         // framerules enforcement
         Object.values(this.framerules).forEach((clas,index)=>{
             clas.some((classs)=>{
-                return this.frame[index] instanceof classs
+                return this.frame[index].class instanceof classs
             }) || (()=>{ throw new Error() })()
         });
     }
 
     public render(scene){
         Object.values(this.frame).forEach((attachment)=>{
-            console.log("attachment",attachment);
-            let clas = attachment["class"];
-            let args = attachment["args"];
-            let instance = new clas(args);
-            attachment["instance"] = instance;
+        //     console.log("attachment",attachment);
+        //     let clas = attachment["class"];
+        //     let args = attachment["args"];
+        //     let instance = new clas(args);
+        //     attachment["instance"] = instance;
+            attachment.instance = attachment.invoke()
             attachment.instance.render(scene);
         });
     }
@@ -183,75 +190,89 @@ export class Spaceship {
         {
             "0": {
                 "class":Fuelsource,
-                "instance": null,
+                "instance": ()=>new Fuelsource({option:0}),
                 "args":{
                     "option":0
                 },
             },
             "1": {
                 "class":Empty,
-                "instance": null,
+                "instance": ()=>new Empty({}),
                 "args":{},
             },
             "2": {
-                "class":Wing,
-                "instance": null,
+                "class":Wing1,
+                "instance": ()=>new Wing1({}),
                 "args":{},
             },
             "3": {
                 "class":Rocket,
-                "instance": null,
+                "instance": ()=>new Rocket({option:1}),
                 "args":{
                     "option": 1
                 }
             },
             "4": {
                 "class":Weapon,
-                "instance": null,
+                "instance": ()=>new Weapon({firerate:3,damage:1}),
                 "args":{firerate:3,damage:1},
             },
             "5": {
                 "class":Lifesupport,
-                "instance": null,
+                "instance": ()=>new Lifesupport({shieldregen:2,healthregen:1}),
                 "args": {shieldregen:2,healthregen:1},
             },
             "6": {
                 "class":Empty,
-                "instance": null,
+                "instance": ()=>new Empty({}),
                 "args":[]
             },
-        }
-        // {
-        //     "name": "fng",
-        //     "0": {
-        //         "class":"Fuelsource",
-        //         "args":[0]
-        //     },
-        //     "1": {
-        //         "class":"",
-        //         "args":[]
-        //     },
-        //     "2": {
-        //         "class":"",
-        //         "args":[]
-        //     },
-        //     "3": {
-        //         "class":"Rocket",
-        //         "args":[]
-        //     },
-        //     "4": {
-        //         "class":"",
-        //         "args":[]
-        //     },
-        //     "5": {
-        //         "class":"",
-        //         "args":[]
-        //     },
-        //     "6": {
-        //         "class":"Weapon",
-        //         "args":[]
-        //     }
-        // },
+        },
+        {
+            "name": "fng",
+            "0": {
+                "class":Fuelsource1,
+                "invoke": ()=>new Fuelsource1({}),
+                "instance":{},
+                "args":{}
+            },
+            "1": {
+                "class":Wingnose,
+                "invoke":()=>new Wingnose({}),
+                "instance":{},
+                "args":{}
+            },
+            "2": {
+                "class":Wing1,
+                "invoke": ()=>new Wing1({}),
+                "instance":{},
+                "args":{},
+            },
+            "3": {
+                "class":Rocket1,
+                "invoke":()=>new Rocket1({option:1}),
+                "instance":{},
+                "args":{option:1}
+            },
+            "4": {
+                "class":Empty,
+                "invoke":()=>new Empty({}),
+                "instance":{},
+                "args":{}
+            },
+            "5": {
+                "class":Empty,
+                "invoke":()=>new Empty({}),
+                "instance":{},
+                "args":{}
+            },
+            "6": {
+                "class":Empty,
+                "invoke":()=>new Empty({}),
+                "instance":{},
+                "args":{}
+            }
+        },
         // {
         //     "name": "",
         //     "0": {
