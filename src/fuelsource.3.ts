@@ -1,16 +1,20 @@
 import { MeshBuilder } from "@babylonjs/core";
 import { Fuelsource } from "./fuelsource";
-export class Fuelsource2 extends Fuelsource {
+
+export class Fuelsource3 extends Fuelsource {
     fueltank0;
     fueltank1;
     fueltank2;
     fueltank3;
     constructor({option}){
         super({option});
+        // option >= 0 && option <= 6 || (()=>{ throw new Error() })()
+        // this.quantity = (option + 1) * 60;
+
     }
     public render(scene){
-
-        let height          = 1;
+        // let height          = 2;
+        let height = 3;
         let diameterTop     = 1;
         let diameterBottom  = 1;
         let diameter        = 1;

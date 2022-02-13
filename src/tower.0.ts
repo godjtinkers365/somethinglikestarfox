@@ -1,11 +1,14 @@
 import {MeshBuilder} from "@babylonjs/core"
+import { Tower } from "./tower";
 
-export class Tower0 {
+export class Tower0 extends Tower {
     towerbase;
     towerblock0;
     towerblock1;
     towerblock2;
-    constructor({}){}
+    constructor({}){
+        super({})
+    }
     public render(scene){
         this.towerbase = MeshBuilder.CreateBox("towerbase",{
             size: 1,

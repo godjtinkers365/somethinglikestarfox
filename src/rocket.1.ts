@@ -1,5 +1,6 @@
 import {MeshBuilder} from "@babylonjs/core"
-export class Rocket1 {
+import { Rocket } from "./rocket";
+export class Rocket1 extends Rocket {
     fuelconsume = 7; // 1 per second
     power = 1;       // propulsion force
     option = 0;
@@ -13,11 +14,8 @@ export class Rocket1 {
     rocketshaft3;
 
     constructor({option}){
-        this.option = option;
-        this.fuelconsume = 7 - option;
-        this.power = 1 + (option / 3)
+        super({option})
     }
-    public propel(){}
     public render(scene){
         this.rocketshaft0 = MeshBuilder.CreateCylinder("rocketshaft0",{
             height:             0.5, //(number) height of the cylinder	2

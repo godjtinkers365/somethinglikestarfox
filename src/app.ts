@@ -3,20 +3,13 @@ import "@babylonjs/inspector";
 import "@babylonjs/loaders/glTF";
 import { Engine, Scene, ArcRotateCamera, Vector3, HemisphericLight, Mesh, MeshBuilder, Vector4 } from "@babylonjs/core";
 
-import { Spaceship } from "./spaceship";
-import { Fuelsource2 } from "./fuelsource.2";
-import { WingL2 } from "./wingL.2"
-import { WeaponR1 } from "./weaponR.1"
-// import { Weapon } from "./weapon";
-// import { Rocket } from "./rocket";
-// import { Wing1 } from "./wing.1";
-// // import { Wing } from "./wing";
-// import { Fuelsource } from "./fuelsource";
-// import { Lifesupport } from "./lifesupport";
-// import { Tower0 } from "./tower.0";
-// import { Tower1 } from "./tower.1";
-// import { Asteroid } from "./asteroid";
-// import { Star } from "./star";
+import { Spaceship0 } from "./spaceship.0";
+import { Spaceship1 } from "./spaceship.1";
+import { Spaceship2 } from "./spaceship.2";
+import { Spaceship3 } from "./spaceship.3";
+import { Spaceship4 } from "./spaceship.4";
+import { Spaceship5 } from "./spaceship.5";
+
 
 
 class App {
@@ -41,23 +34,12 @@ class App {
         // const roofMat = new Babylon.StandardMaterial("roofMat");
         // roofMat.diffuseTexture = new Babylon.Texture("https://assets.babylonjs.com/environments/roof.jpg", scene);
 
-
-
-        
-        // new Weapon(3,1).render(scene);
-        // new Rocket(0).render(scene);
-        // new Wing1().render(scene);
-        // new Fuelsource(0).render(scene);
-        // new Lifesupport(2,1).render(scene);
-        // new Tower0().render(scene);
-        // new Tower1().render(scene);
-        // new Asteroid().render(scene);
-        // new Star().render(scene);
-
-        new Spaceship({}).render(scene);
-        // new Fuelsource2({}).render(scene);
-        // new WingL2({}).render(scene);
-        // new WeaponR1({firerate:3,damage:1}).render(scene);
+        new Spaceship0().render(scene);
+        new Spaceship1().render(scene);
+        new Spaceship2().render(scene);
+        new Spaceship3().render(scene);
+        new Spaceship4().render(scene);
+        new Spaceship5().render(scene);
 
         // hide/show the Inspector
         window.addEventListener("keydown", (ev) => {

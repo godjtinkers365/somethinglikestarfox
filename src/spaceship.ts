@@ -1,28 +1,12 @@
-import {Fuelsource} from "./fuelsource"
-import {Fuelsource1} from "./fuelsource.1"
-import {Fuelsource2} from "./fuelsource.2"
-import {Rocket} from "./rocket"
-import {Rocket1} from "./rocket.1"
-import {Weapon} from "./weapon"
-import {WWeaponL} from "./wweaponl"
-import {WWeaponR} from "./wweaponr"
-// import {Wing} from "./wing"
-import {Wing1} from "./wing.1"
-import {XWingL} from "./xwingl"
-import {XWingR} from "./xwingr"
-import {Wingnose} from "./wingnnose"
-import {Wingnose1} from "./wingnose.1"
-import {Lifesupport} from "./lifesupport"
-import {Empty} from "./empty";
 // import {MeshBuilder} from "@babylonjs/core"
 
-
-function render(scene){
-    /**
-     * This is a mock function
-     * to trick the transpiler.
-     */
+interface frame {
+    "class":  Function
+    "invoke": Function
+    "instance":{render}
+    "args":any
 }
+
 
 export class Spaceship {
     constructor({}) {
@@ -54,48 +38,48 @@ export class Spaceship {
         // 4: {},  // right face   //
         // 5: {},  // top face     //
         // 6: {},  // bottom face  //
-        "0": {
-            "class":Fuelsource2,
-            "invoke": ()=>new Fuelsource2({}),
-            "instance":{render},
-            "args":{}
-        },
-        "1": {
-            "class":Wingnose1,
-            "invoke":()=>new Wingnose1({}),
-            "instance":{render},
-            "args":{}
-        },
-        "2": {
-            "class":XWingL,
-            "invoke": ()=>new XWingL({}),
-            "instance":{render},
-            "args":{},
-        },
-        "3": {
-            "class":Rocket1,
-            "invoke":()=>new Rocket1({option:1}),
-            "instance":{render},
-            "args":{option:1}
-        },
-        "4": {
-            "class":XWingR,
-            "invoke":()=>new XWingR({}),
-            "instance":{render},
-            "args":{}
-        },
-        "5": {
-            "class":WWeaponL,
-            "invoke":()=>new WWeaponL({firerate:3,damage:1}),
-            "instance":{render},
-            "args":{}
-        },
-        "6": {
-            "class":WWeaponR,
-            "invoke":()=>new WWeaponR({firerate:3,damage:1}),
-            "instance":{render},
-            "args":{}
-        }
+        // "0": {
+        //     "class":Fuelsource3,
+        //     "invoke": ()=>new Fuelsource3({option:1}),
+        //     "instance":{render},
+        //     "args":{option:1}
+        // },
+        // "1": {
+        //     "class":Wingnose1,
+        //     "invoke":()=>new Wingnose1({}),
+        //     "instance":{render},
+        //     "args":{}
+        // },
+        // "2": {
+        //     "class":XWingL,
+        //     "invoke": ()=>new XWingL({}),
+        //     "instance":{render},
+        //     "args":{},
+        // },
+        // "3": {
+        //     "class":Rocket2,
+        //     "invoke":()=>new Rocket2({option:1}),
+        //     "instance":{render},
+        //     "args":{option:1}
+        // },
+        // "4": {
+        //     "class":XWingR,
+        //     "invoke":()=>new XWingR({}),
+        //     "instance":{render},
+        //     "args":{}
+        // },
+        // "5": {
+        //     "class":WWeaponL,
+        //     "invoke":()=>new WWeaponL({firerate:3,damage:1}),
+        //     "instance":{render},
+        //     "args":{}
+        // },
+        // "6": {
+        //     "class":WWeaponR,
+        //     "invoke":()=>new WWeaponR({firerate:3,damage:1}),
+        //     "instance":{render},
+        //     "args":{}
+        // }
     }
 
     fuelsource:{
@@ -153,28 +137,28 @@ export class Spaceship {
     public accel(){}
 
     public customize(customization){
-        let cust;
-        if (typeof customization === "string") {
-            cust = Spaceship.customizations.filter((obj) => {
-                return obj.name === customization
-            });
-            if (cust.length !== 1) {
-                throw new Error();
-            }
-        } else if (typeof customization === "object" && !Array.isArray(customization)) {
-            cust = customization;
-        } else {
-            throw new Error();
-        }
-        for (let i = 0; i < 7; i++){
-            this.frame[i] = cust[i];               
-        }
-        // framerules enforcement
-        Object.values(this.framerules).forEach((clas,index)=>{
-            clas.some((classs)=>{
-                return this.frame[index].class instanceof classs
-            }) || (()=>{ throw new Error() })()
-        });
+        // let cust;
+        // if (typeof customization === "string") {
+        //     cust = Spaceship.customizations.filter((obj) => {
+        //         return obj.name === customization
+        //     });
+        //     if (cust.length !== 1) {
+        //         throw new Error();
+        //     }
+        // } else if (typeof customization === "object" && !Array.isArray(customization)) {
+        //     cust = customization;
+        // } else {
+        //     throw new Error();
+        // }
+        // for (let i = 0; i < 7; i++){
+        //     this.frame[i] = cust[i];               
+        // }
+        // // framerules enforcement
+        // Object.values(this.framerules).forEach((clas,index)=>{
+        //     clas.some((classs)=>{
+        //         return this.frame[index].class instanceof classs
+        //     }) || (()=>{ throw new Error() })()
+        // });
     }
 
     public render(scene){
@@ -188,321 +172,4 @@ export class Spaceship {
             attachment.instance.render(scene);
         });
     }
-
-
-
-
-    static customizations = [
-        {
-            "0": {
-                "class":Fuelsource,
-                "instance": ()=>new Fuelsource({option:0}),
-                "args":{
-                    "option":0
-                },
-            },
-            "1": {
-                "class":Empty,
-                "instance": ()=>new Empty({}),
-                "args":{},
-            },
-            "2": {
-                "class":Wing1,
-                "instance": ()=>new Wing1({}),
-                "args":{},
-            },
-            "3": {
-                "class":Rocket,
-                "instance": ()=>new Rocket({option:1}),
-                "args":{
-                    "option": 1
-                }
-            },
-            "4": {
-                "class":Weapon,
-                "instance": ()=>new Weapon({firerate:3,damage:1}),
-                "args":{firerate:3,damage:1},
-            },
-            "5": {
-                "class":Lifesupport,
-                "instance": ()=>new Lifesupport({shieldregen:2,healthregen:1}),
-                "args": {shieldregen:2,healthregen:1},
-            },
-            "6": {
-                "class":Empty,
-                "instance": ()=>new Empty({}),
-                "args":[]
-            },
-        },
-        {
-            "name":"fng",
-            "0": {
-                "class":Fuelsource1,
-                "invoke": ()=>new Fuelsource1({}),
-                "instance":{render},
-                "args":{}
-            },
-            "1": {
-                "class":Wingnose,
-                "invoke":()=>new Wingnose({}),
-                "instance":{render},
-                "args":{}
-            },
-            "2": {
-                "class":Wing1,
-                "invoke": ()=>new Wing1({}),
-                "instance":{render},
-                "args":{},
-            },
-            "3": {
-                "class":Rocket1,
-                "invoke":()=>new Rocket1({option:1}),
-                "instance":{render},
-                "args":{option:1}
-            },
-            "4": {
-                "class":Empty,
-                "invoke":()=>new Empty({}),
-                "instance":{render},
-                "args":{}
-            },
-            "5": {
-                "class":Empty,
-                "invoke":()=>new Empty({}),
-                "instance":{render},
-                "args":{}
-            },
-            "6": {
-                "class":Empty,
-                "invoke":()=>new Empty({}),
-                "instance":{render},
-                "args":{}
-            }
-        },
-        {
-            "name": "coolerdesign",
-            "0": {
-                "class":Fuelsource2,
-                "invoke": ()=>new Fuelsource2({}),
-                "instance":{render},
-                "args":{}
-            },
-            "1": {
-                "class":Wingnose,
-                "invoke":()=>new Wingnose({}),
-                "instance":{render},
-                "args":{}
-            },
-            "2": {
-                "class":Wing1,
-                "invoke": ()=>new Wing1({}),
-                "instance":{render},
-                "args":{},
-            },
-            "3": {
-                "class":Rocket1,
-                "invoke":()=>new Rocket1({option:1}),
-                "instance":{render},
-                "args":{option:1}
-            },
-            "4": {
-                "class":Empty,
-                "invoke":()=>new Empty({}),
-                "instance":{render},
-                "args":{}
-            },
-            "5": {
-                "class":Empty,
-                "invoke":()=>new Empty({}),
-                "instance":{render},
-                "args":{}
-            },
-            "6": {
-                "class":Empty,
-                "invoke":()=>new Empty({}),
-                "instance":{render},
-                "args":{}
-            }
-        },
-        {
-            "0": {
-                "class":Fuelsource2,
-                "invoke": ()=>new Fuelsource2({}),
-                "instance":{render},
-                "args":{}
-            },
-            "1": {
-                "class":Wingnose1,
-                "invoke":()=>new Wingnose1({}),
-                "instance":{render},
-                "args":{}
-            },
-            "2": {
-                "class":XWingL,
-                "invoke": ()=>new XWingL({}),
-                "instance":{render},
-                "args":{},
-            },
-            "3": {
-                "class":Rocket1,
-                "invoke":()=>new Rocket1({option:1}),
-                "instance":{render},
-                "args":{option:1}
-            },
-            "4": {
-                "class":XWingR,
-                "invoke":()=>new XWingR({}),
-                "instance":{render},
-                "args":{}
-            },
-            "5": {
-                "class":Empty,
-                "invoke":()=>new Empty({}),
-                "instance":{render},
-                "args":{}
-            },
-            "6": {
-                "class":Empty,
-                "invoke":()=>new Empty({}),
-                "instance":{render},
-                "args":{}
-            }
-        }
-        // {
-        //     "name": "",
-        //     "0": {
-        //         "class":"Fuelsource",
-        //         "args":[0]
-        //     },
-        //     "1": {
-        //         "class":"",
-        //         "args":[]
-        //     },
-        //     "2": {
-        //         "class":"",
-        //         "args":[]
-        //     },
-        //     "3": {
-        //         "class":"Rocket",
-        //         "args":[]
-        //     },
-        //     "4": {
-        //         "class":"",
-        //         "args":[]
-        //     },
-        //     "5": {
-        //         "class":"",
-        //         "args":[]
-        //     },
-        //     "6": {
-        //         "class":"",
-        //         "args":[]
-        //     }
-        // },
-        // {
-        //     "name": "",
-        //     "0": {
-        //         "class":"Fuelsource",
-        //         "args":[0]
-        //     },
-        //     "1": {
-        //         "class":"",
-        //         "args":[]
-        //     },
-        //     "2": {
-        //         "class":"",
-        //         "args":[]
-        //     },
-        //     "3": {
-        //         "class":"Rocket",
-        //         "args":[]
-        //     },
-        //     "4": {
-        //         "class":"",
-        //         "args":[]
-        //     },
-        //     "5": {
-        //         "class":"",
-        //         "args":[]
-        //     },
-        //     "6": {
-        //         "class":"",
-        //         "args":[]
-        //     }
-        // },
-        // {
-        //     "name": "",
-        //     "0": {
-        //         "class":"Fuelsource",
-        //         "args":[0]
-        //     },
-        //     "1": {
-        //         "class":"",
-        //         "args":[]
-        //     },
-        //     "2": {
-        //         "class":"",
-        //         "args":[]
-        //     },
-        //     "3": {
-        //         "class":"Rocket",
-        //         "args":[]
-        //     },
-        //     "4": {
-        //         "class":"",
-        //         "args":[]
-        //     },
-        //     "5": {
-        //         "class":"",
-        //         "args":[]
-        //     },
-        //     "6": {
-        //         "class":"",
-        //         "args":[]
-        //     }
-        // },
-        // {
-        //     "name": "",
-        //     "0": {
-        //         "class":"Fuelsource",
-        //         "args":[0]
-        //     },
-        //     "1": {
-        //         "class":"",
-        //         "args":[]
-        //     },
-        //     "2": {
-        //         "class":"",
-        //         "args":[]
-        //     },
-        //     "3": {
-        //         "class":"Rocket",
-        //         "args":[]
-        //     },
-        //     "4": {
-        //         "class":"",
-        //         "args":[]
-        //     },
-        //     "5": {
-        //         "class":"",
-        //         "args":[]
-        //     },
-        //     "6": {
-        //         "class":"",
-        //         "args":[]
-        //     }
-        // }
-    ]
-
-
-
-
-
-
-
-
-
-
-
-
 }
