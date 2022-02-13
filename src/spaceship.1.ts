@@ -4,7 +4,7 @@ import { render } from "./render.mock";
 import { Rocket1 } from "./rocket.1";
 import { Spaceship } from "./spaceship";
 import { Wing1 } from "./wing.1";
-import { Wingnose } from "./wingnnose";
+import { Wingnose0 } from "./wingnnose.0";
 
 export class Spaceship1 extends Spaceship {
     constructor(){
@@ -18,8 +18,8 @@ export class Spaceship1 extends Spaceship {
                     "args":{}
                 },
                 "1": {
-                    "class":Wingnose,
-                    "invoke":()=>new Wingnose({}),
+                    "class":Wingnose0,
+                    "invoke":()=>new Wingnose0({}),
                     "instance":{render},
                     "args":{}
                 },
