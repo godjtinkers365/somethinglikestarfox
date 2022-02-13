@@ -1,19 +1,20 @@
-import { Empty } from './empty';
-import { Fuelsource } from './fuelsource';
-import { Lifesupport } from './lifesupport';
-import { render } from './render.mock';
-import { Rocket } from './rocket';
-import {Spaceship} from './spaceship'
-import { Weapon } from './weapon';
-import { Wing1 } from './wing.1';
+import { Empty } from "./empty";
+import { Fuelsource0 } from "./fuelsource.0";
+import { Lifesupport } from "./lifesupport";
+import { render } from "./render.mock";
+import { Rocket0 } from "./rocket.0";
+import { Spaceship } from "./spaceship";
+import { Weapon } from "./weapon";
+import { Wing1 } from "./wing.1";
+
 export class Spaceship0 extends Spaceship {
     constructor(){
         super({});
         this.frame = {
             "name":"???",
             "0": {
-                "class":Fuelsource,
-                "invoke": ()=>new Fuelsource({option:0}),
+                "class":Fuelsource0,
+                "invoke": ()=>new Fuelsource0({option:0}),
                 "instance":{render},
                 "args":{
                     "option":0
@@ -32,8 +33,8 @@ export class Spaceship0 extends Spaceship {
                 "args":{},
             },
             "3": {
-                "class":Rocket,
-                "invoke": ()=>new Rocket({option:1}),
+                "class":Rocket0,
+                "invoke": ()=>new Rocket0({option:1}),
                 "instance":{render},
                 "args":{
                     "option": 1
@@ -55,7 +56,7 @@ export class Spaceship0 extends Spaceship {
                 "class":Empty,
                 "invoke": ()=>new Empty({}),
                 "instance":{render},
-                "args":[]
+                "args":{}
             },
         }
     }

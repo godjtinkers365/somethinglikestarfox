@@ -2,8 +2,9 @@ import { MeshBuilder } from "@babylonjs/core";
 import { Fuelsource } from "./fuelsource";
 
 export class Fuelsource0 extends Fuelsource {
-    constructor(){
-        super({option:1});
+    sshipc;
+    constructor({option}){
+        super({option});
     }
     public render(scene){
         this.sshipc = MeshBuilder.CreateBox("sshipc",{
