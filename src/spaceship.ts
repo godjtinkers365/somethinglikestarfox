@@ -1,10 +1,35 @@
 // import {MeshBuilder} from "@babylonjs/core"
 
+import { Fuelsource } from "./fuelsource";
+import { Fuelsource3 } from "./fuelsource.3";
+import { Lifesupport } from "./lifesupport";
+import { render } from "./render.mock";
+import { Rocket } from "./rocket";
+import { Rocket2 } from "./rocket.2";
+import { Weapon } from "./weapon";
+import { Wing } from "./wing";
+import { Wingnose1 } from "./wingnose.1";
+import { WWeaponL } from "./wweaponl";
+import { WWeaponR } from "./wweaponr";
+import { XWingL } from "./xwingl";
+import { XWingR } from "./xwingr";
+
+interface frameObj {
+    "class":  Function | any
+    "invoke": Function | any
+    "instance":{render} | any
+    "args":any | any
+}
+
 interface frame {
-    "class":  Function
-    "invoke": Function
-    "instance":{render}
-    "args":any
+    "name": string
+    "0":frameObj
+    "1":frameObj
+    "2":frameObj
+    "3":frameObj
+    "4":frameObj
+    "5":frameObj
+    "6":frameObj
 }
 
 
@@ -19,14 +44,14 @@ export class Spaceship {
                         // health regenerates slower than shield
     framerules = {
         0: [Fuelsource], 
-        1: [Weapon, Wing1, Lifesupport], 
-        2: [Weapon, Wing1, Lifesupport], 
+        1: [Weapon, Wing, Lifesupport], 
+        2: [Weapon, Wing, Lifesupport], 
         3: [Rocket],
-        4: [Weapon, Wing1, Lifesupport],
-        5: [Weapon, Wing1, Lifesupport], 
-        6: [Weapon, Wing1, Lifesupport], 
+        4: [Weapon, Wing, Lifesupport],
+        5: [Weapon, Wing, Lifesupport], 
+        6: [Weapon, Wing, Lifesupport], 
     }
-    frame = { // ships central frame
+    frame:frame = { // ships central frame
 
         // 6 attachments
         // 1 inner fuel storage
@@ -38,48 +63,49 @@ export class Spaceship {
         // 4: {},  // right face   //
         // 5: {},  // top face     //
         // 6: {},  // bottom face  //
-        // "0": {
-        //     "class":Fuelsource3,
-        //     "invoke": ()=>new Fuelsource3({option:1}),
-        //     "instance":{render},
-        //     "args":{option:1}
-        // },
-        // "1": {
-        //     "class":Wingnose1,
-        //     "invoke":()=>new Wingnose1({}),
-        //     "instance":{render},
-        //     "args":{}
-        // },
-        // "2": {
-        //     "class":XWingL,
-        //     "invoke": ()=>new XWingL({}),
-        //     "instance":{render},
-        //     "args":{},
-        // },
-        // "3": {
-        //     "class":Rocket2,
-        //     "invoke":()=>new Rocket2({option:1}),
-        //     "instance":{render},
-        //     "args":{option:1}
-        // },
-        // "4": {
-        //     "class":XWingR,
-        //     "invoke":()=>new XWingR({}),
-        //     "instance":{render},
-        //     "args":{}
-        // },
-        // "5": {
-        //     "class":WWeaponL,
-        //     "invoke":()=>new WWeaponL({firerate:3,damage:1}),
-        //     "instance":{render},
-        //     "args":{}
-        // },
-        // "6": {
-        //     "class":WWeaponR,
-        //     "invoke":()=>new WWeaponR({firerate:3,damage:1}),
-        //     "instance":{render},
-        //     "args":{}
-        // }
+        "name": "x wing 2",
+        "0": {
+            "class":Fuelsource3,
+            "invoke": ()=>new Fuelsource3({option:1}),
+            "instance":{render},
+            "args":{option:1}
+        },
+        "1": {
+            "class":Wingnose1,
+            "invoke":()=>new Wingnose1({}),
+            "instance":{render},
+            "args":{}
+        },
+        "2": {
+            "class":XWingL,
+            "invoke": ()=>new XWingL({}),
+            "instance":{render},
+            "args":{},
+        },
+        "3": {
+            "class":Rocket2,
+            "invoke":()=>new Rocket2({option:1}),
+            "instance":{render},
+            "args":{option:1}
+        },
+        "4": {
+            "class":XWingR,
+            "invoke":()=>new XWingR({}),
+            "instance":{render},
+            "args":{}
+        },
+        "5": {
+            "class":WWeaponL,
+            "invoke":()=>new WWeaponL({firerate:3,damage:1}),
+            "instance":{render},
+            "args":{}
+        },
+        "6": {
+            "class":WWeaponR,
+            "invoke":()=>new WWeaponR({firerate:3,damage:1}),
+            "instance":{render},
+            "args":{}
+        }
     }
 
     fuelsource:{

@@ -15,7 +15,7 @@ export class Spaceship4 extends Spaceship {
             "name":"xwing 1",
             "0": {
                 "class":Fuelsource2,
-                "invoke": ()=>new Fuelsource2({}),
+                "invoke": ()=>new Fuelsource2({option:1}),
                 "instance":{render},
                 "args":{}
             },

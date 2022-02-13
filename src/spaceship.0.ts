@@ -10,6 +10,7 @@ export class Spaceship0 extends Spaceship {
     constructor(){
         super({});
         this.frame = {
+            "name":"???",
             "0": {
                 "class":Fuelsource,
                 "invoke": ()=>new Fuelsource({option:0}),
@@ -20,34 +21,40 @@ export class Spaceship0 extends Spaceship {
             },
             "1": {
                 "class":Empty,
-                "instance": ()=>new Empty({}),
+                "invoke": ()=>new Empty({}),
+                "instance":{render},
                 "args":{},
             },
             "2": {
                 "class":Wing1,
-                "instance": ()=>new Wing1({}),
+                "invoke": ()=>new Wing1({}),
+                "instance":{render},
                 "args":{},
             },
             "3": {
                 "class":Rocket,
-                "instance": ()=>new Rocket({option:1}),
+                "invoke": ()=>new Rocket({option:1}),
+                "instance":{render},
                 "args":{
                     "option": 1
                 }
             },
             "4": {
                 "class":Weapon,
-                "instance": ()=>new Weapon({firerate:3,damage:1}),
+                "invoke": ()=>new Weapon({firerate:3,damage:1}),
+                "instance":{render},
                 "args":{firerate:3,damage:1},
             },
             "5": {
                 "class":Lifesupport,
-                "instance": ()=>new Lifesupport({shieldregen:2,healthregen:1}),
+                "invoke": ()=>new Lifesupport({shieldregen:2,healthregen:1}),
+                "instance":{render},
                 "args": {shieldregen:2,healthregen:1},
             },
             "6": {
                 "class":Empty,
-                "instance": ()=>new Empty({}),
+                "invoke": ()=>new Empty({}),
+                "instance":{render},
                 "args":[]
             },
         }

@@ -35,11 +35,11 @@ class App {
         // roofMat.diffuseTexture = new Babylon.Texture("https://assets.babylonjs.com/environments/roof.jpg", scene);
 
         new Spaceship0().render(scene);
-        new Spaceship1().render(scene);
-        new Spaceship2().render(scene);
-        new Spaceship3().render(scene);
-        new Spaceship4().render(scene);
-        new Spaceship5().render(scene);
+        // new Spaceship1().render(scene);
+        // new Spaceship2().render(scene);
+        // new Spaceship3().render(scene);
+        // new Spaceship4().render(scene);
+        // new Spaceship5().render(scene);
 
         // hide/show the Inspector
         window.addEventListener("keydown", (ev) => {

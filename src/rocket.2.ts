@@ -1,4 +1,5 @@
 import {MeshBuilder} from "@babylonjs/core"
+import { Rocket } from "./rocket";
 export class Rocket2 extends Rocket {
     fuelconsume = 7; // 1 per second
     power = 1;       // propulsion force

@@ -13,7 +13,7 @@ export class Spaceship2 extends Spaceship {
             "name": "coolerdesign",
             "0": {
                 "class":Fuelsource2,
-                "invoke": ()=>new Fuelsource2({}),
+                "invoke": ()=>new Fuelsource2({option:1}),
                 "instance":{render},
                 "args":{}
             },
