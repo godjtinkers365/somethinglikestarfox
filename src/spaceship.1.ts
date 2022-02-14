@@ -8,8 +8,8 @@ import { Wingnose0 } from "./wingnnose.0";
 
 export class Spaceship1 extends Spaceship {
     constructor(){
-        super({});
-        this.frame = {
+        super({
+            frame:{
                 "name":"fng",
                 "0": {
                     "class":Fuelsource1,
@@ -53,6 +53,6 @@ export class Spaceship1 extends Spaceship {
                     "instance":{render},
                     "args":{}
                 }
-        };
+        }})
     }
 }

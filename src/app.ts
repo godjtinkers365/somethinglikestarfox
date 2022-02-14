@@ -17,6 +17,7 @@ import { Lifesupport0 } from "./lifesupport.0";
 import { Rocket0 } from "./rocket.0";
 import { Rocket1 } from "./rocket.1";
 import { Rocket2 } from "./rocket.2";
+import { Spaceship } from "./spaceship";
 
 
 
@@ -42,7 +43,8 @@ class App {
         // const roofMat = new Babylon.StandardMaterial("roofMat");
         // roofMat.diffuseTexture = new Babylon.Texture("https://assets.babylonjs.com/environments/roof.jpg", scene);
 
-        // new Spaceship0().render(scene);
+        // new Spaceship({}).render(scene);
+        // new Spaceship0({}).render(scene);
         // new Spaceship1().render(scene);
         // new Spaceship2().render(scene);
         // new Spaceship3().render(scene);

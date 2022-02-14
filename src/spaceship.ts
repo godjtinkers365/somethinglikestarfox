@@ -34,8 +34,9 @@ interface frame {
 
 
 export class Spaceship {
-    constructor({}) {
+    constructor({frame}) {
         // this.customize("lotsofguns");
+        this.frame = frame;
     }
 
     energy = 3000;      // everything in the game revolves around energy
@@ -194,8 +195,10 @@ export class Spaceship {
         //     let args = attachment["args"];
         //     let instance = new clas(args);
         //     attachment["instance"] = instance;
-            attachment.instance = attachment.invoke()
-            attachment.instance.render(scene);
+            if (typeof attachment === "object"){
+                attachment.instance = attachment.invoke()
+                attachment.instance.render(scene);
+            }
         });
     }
 }
