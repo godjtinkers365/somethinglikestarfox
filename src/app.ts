@@ -18,6 +18,7 @@ import { Rocket0 } from "./rocket.0";
 import { Rocket1 } from "./rocket.1";
 import { Rocket2 } from "./rocket.2";
 import { Spaceship } from "./spaceship";
+import { Spaceship6 } from "./spaceship.6";
 
 
 
@@ -50,6 +51,7 @@ class App {
         // new Spaceship3().render(scene);
         // new Spaceship4().render(scene);
         // new Spaceship5().render(scene);
+        new Spaceship6().render(scene);
 
 
         // new Fuelsource0({option:1}).render(scene);
